@@ -1,0 +1,117 @@
+/**
+ * DP Design Tokens
+ * 由 pencil-design-system.pen 的 62 个设计变量生成，是整个组件库的唯一样式来源。
+ * 改这里，全库联动。命名与 .pen 变量一一对应，前缀 --dp-。
+ */
+:root {
+  /* ---- Brand & Surface ---- */
+  --dp-action: #202020;
+  --dp-action-foreground: #ffffff;
+  --dp-background: #f7f9ff;
+  --dp-card: #ffffff;
+  --dp-muted: #f7f9ff;
+  --dp-muted-blue: #edeff8;
+  --dp-muted-gray: #f9f9f9;
+  --dp-primary: #d4d8ff;
+  --dp-primary-bg: #f3f4ff;
+  --dp-primary-solid: #6e77ff;
+  --dp-primary-solid-end: #8473ff;
+  --dp-primary-tint: #e0d9ff;
+  --dp-primary-tint-end: #efecff;
+  --dp-icon-tint: #f3f7ff;
+
+  /* ---- Brand Gradient ---- */
+  --dp-brand-grad-from: #6e77ff;
+  --dp-brand-grad-to: #8473ff;
+  --dp-brand-grad-tint-from: #e0d9ff;
+  --dp-brand-grad-tint-to: #efecff;
+  --dp-gradient-brand: linear-gradient(135deg, var(--dp-brand-grad-from), var(--dp-brand-grad-to));
+  --dp-gradient-brand-tint: linear-gradient(
+    135deg,
+    var(--dp-brand-grad-tint-from),
+    var(--dp-brand-grad-tint-to)
+  );
+
+  /* ---- Text ---- */
+  --dp-foreground: #202020;
+  --dp-foreground-body: #202020cc;
+  --dp-foreground-disabled: #20202033;
+  --dp-foreground-emphasized: #2e437d;
+  --dp-foreground-on-action: #ffffff;
+  --dp-foreground-on-primary: #202020;
+  --dp-foreground-on-solid: #ffffff;
+  --dp-foreground-tertiary: #2020204d;
+  --dp-muted-foreground: #20202099;
+
+  /* ---- Border & Divider ---- */
+  --dp-border: #2020201a;
+  --dp-border-gray: #dee0ed;
+  --dp-border-subtle: #2020200f;
+  --dp-divider: #eaecf5;
+
+  /* ---- Button states ---- */
+  --dp-button-primary-hover: #2b2b2b;
+  --dp-button-primary-pressed: #111111;
+  --dp-button-secondary-hover: #e9ebff;
+  --dp-button-outline-hover: #f7f9ff;
+  --dp-button-ghost-hover: #f3f4ff;
+  --dp-button-destructive-hover: #dc2626;
+  --dp-button-disabled-bg: #20202014;
+  --dp-button-disabled-fg: #2020204d;
+  --dp-button-focus-ring: #d4d8ff;
+
+  /* ---- Semantic / Auxiliary ---- */
+  --dp-color-success: #10b981;
+  --dp-color-warning: #f59e0b;
+  --dp-color-error: #ef4444;
+  --dp-color-info: #3b82f6;
+  --dp-destructive: #ef4444;
+  --dp-tint-blue: #e4ebfc;
+  --dp-tint-orange: #f1e9dd;
+  --dp-tint-purple: #e6e3f2;
+
+  /* ---- Typography ---- */
+  --dp-font-primary: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  --dp-font-secondary: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  --dp-font-en: Inter, sans-serif;
+  --dp-font-numeric: Roboto, sans-serif;
+  --dp-font-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  --dp-font-size-h1: 20px;
+  --dp-font-size-h2: 16px;
+  --dp-font-size-body: 14px;
+  --dp-font-size-caption: 12px;
+
+  --dp-line-height-h1: 28px;
+  --dp-line-height-h2: 22px;
+  --dp-line-height-body: 20px;
+  --dp-line-height-caption: 18px;
+
+  --dp-font-weight-regular: 400;
+  --dp-font-weight-medium: 500;
+  --dp-font-weight-semibold: 600;
+
+  /* ---- Radius ---- */
+  --dp-radius-xs: 4px;
+  --dp-radius-sm: 8px;
+  --dp-radius-m: 12px;
+  --dp-radius-lg: 16px;
+  --dp-radius-xl: 20px;
+  --dp-radius-pill: 9999px;
+  --dp-radius-full: 9999px;
+
+  /* ---- Spacing (4px base) ---- */
+  --dp-space-0: 0px;
+  --dp-space-1: 2px;
+  --dp-space-2: 4px;
+  --dp-space-3: 6px;
+  --dp-space-4: 8px;
+  --dp-space-5: 10px;
+  --dp-space-6: 12px;
+  --dp-space-8: 16px;
+  --dp-space-10: 20px;
+  --dp-space-12: 24px;
+  --dp-space-16: 32px;
+  --dp-space-20: 40px;
+  --dp-space-24: 48px;
+}

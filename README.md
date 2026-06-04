@@ -1,0 +1,122 @@
+# @dp/ui
+
+DataPocket 设计系统 Vue 3 组件库。所有样式来自 `pencil-design-system.pen` 的设计令牌（62 个 token），改 `src/tokens/tokens.css` 即可全库联动。
+
+这是**端到端样板**，目前包含：设计令牌 + `Button` + `Tag` + 构建管线 + 文档 playground。后续按同一模式批量补齐其余组件。
+
+## 设计到代码规范
+
+- [P0 Vue API Spec](./docs/p0-api-spec.md)：第一阶段基础组件的 props、slots、events、状态映射和实现顺序。
+
+## 开发
+
+```bash
+npm install
+npm run dev      # 打开 playground 预览组件
+npm run build    # 产出 dist（ESM + UMD + 类型 + 样式）
+```
+
+## 在其他项目中使用
+
+```bash
+npm install @dp/ui
+```
+
+全量注册（插件方式，组件名前缀 `Dp`）：
+
+```ts
+import { createApp } from 'vue'
+import DpUI from '@dp/ui'
+import '@dp/ui/style.css'
+
+createApp(App).use(DpUI).mount('#app')
+// 模板里：<DpButton>新建专题</DpButton>
+```
+
+按需引入（tree-shaking）：
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { Button, Icon, SearchInput, Tag } from '@dp/ui'
+import '@dp/ui/style.css'
+
+const keyword = ref('')
+</script>
+
+<template>
+  <Button @click="onClick">
+    <template #icon><Icon name="plus" /></template>
+    新建专题
+  </Button>
+  <SearchInput v-model="keyword" placeholder="搜索专题" />
+  <Tag variant="success" icon="document">已关注</Tag>
+</template>
+```
+
+## 组件 API
+
+### Button
+
+| Prop           | 类型                                                                 | 默认      | 说明                 |
+| -------------- | -------------------------------------------------------------------- | --------- | -------------------- |
+| `variant`      | `'primary' \| 'secondary' \| 'ghost' \| 'outline' \| 'destructive'`  | `primary` | 视觉变体             |
+| `size`         | `'sm' \| 'md'`                                                       | `md`      | 尺寸（28 / 32px 高） |
+| `iconOnly`     | `boolean`                                                            | `false`   | 纯图标正方形按钮     |
+| `iconPosition` | `'left' \| 'right'`                                                  | `left`    | 图标位置             |
+| `disabled`     | `boolean`                                                            | `false`   | 禁用                 |
+| `loading`      | `boolean`                                                            | `false`   | 加载中               |
+| `active`       | `boolean`                                                            | `false`   | 激活态               |
+| `block`        | `boolean`                                                            | `false`   | 宽度撑满容器         |
+
+- 事件：`click`
+- 插槽：默认（文字）、`icon`（图标）、`loading`（加载图标）
+
+### Input / SearchInput
+
+| Prop          | 类型                 | 默认      | 说明       |
+| ------------- | -------------------- | --------- | ---------- |
+| `modelValue`  | `string \| number`   | `''`      | 输入值     |
+| `placeholder` | `string`             | `''`      | 占位文案   |
+| `size`        | `'sm' \| 'md'`       | `md`      | 尺寸       |
+| `disabled`    | `boolean`            | `false`   | 禁用       |
+| `readonly`    | `boolean`            | `false`   | 只读       |
+| `clearable`   | `boolean`            | `false`   | 可清除     |
+| `error`       | `boolean`            | `false`   | 错误态     |
+| `errorMessage`| `string`             | `''`      | 错误提示   |
+| `prefixIcon`  | `string`             | -         | 前置图标名 |
+| `suffixIcon`  | `string`             | -         | 后置图标名 |
+
+- 事件：`update:modelValue`、`change`、`focus`、`blur`、`clear`
+- 插槽：`prefix`、`suffix`
+- `SearchInput` 默认 `type="search"`、`prefixIcon="search"`、`clearable=true`
+
+### Tag
+
+| Prop       | 类型                                                                             | 默认      | 说明       |
+| ---------- | -------------------------------------------------------------------------------- | --------- | ---------- |
+| `variant`  | `'default' \| 'primary' \| 'success' \| 'warning' \| 'info' \| 'keyword'`         | `default` | 语义变体   |
+| `size`     | `'sm' \| 'md'`                                                                   | `sm`      | 尺寸       |
+| `selected` | `boolean`                                                                        | `false`   | 选中描边态 |
+| `disabled` | `boolean`                                                                        | `false`   | 禁用       |
+| `closable` | `boolean`                                                                        | `false`   | 可关闭     |
+| `icon`     | `string`                                                                         | -         | 内置图标名 |
+
+- 事件：`click`、`close`
+- 插槽：默认（文字）、`icon`（图标）
+
+### Icon
+
+| Prop         | 类型                         | 默认           | 说明               |
+| ------------ | ---------------------------- | -------------- | ------------------ |
+| `name`       | `IconName \| string`         | 必填           | 图标名             |
+| `size`       | `16 \| 20 \| 24 \| number`   | `16`           | 图标尺寸           |
+| `color`      | `string`                     | `currentColor` | 图标颜色           |
+| `decorative` | `boolean`                    | `true`         | 是否为纯装饰图标   |
+| `label`      | `string`                     | -              | 非装饰图标访问名称 |
+
+## 发布到 git.woa.com 私有 npm
+
+1. 在 `package.json` 把 `name` 改成公司规范的 scope（如 `@tencent/dp-ui`），并设置 `publishConfig.registry` 指向内部 registry。
+2. `npm run build`
+3. `npm publish`

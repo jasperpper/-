@@ -1,6 +1,6 @@
 {
   "name": "@dp/ui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "DataPocket 设计系统 Vue 3 组件库（由 pencil-design-system.pen 生成）",
   "type": "module",
   "files": [

@@ -2,11 +2,12 @@
 
 DataPocket 设计系统 Vue 3 组件库。所有样式来自 `pencil-design-system.pen` 的设计令牌（62 个 token），改 `src/tokens/tokens.css` 即可全库联动。
 
-这是**端到端样板**，目前包含：设计令牌 + `Button` + `Tag` + 构建管线 + 文档 playground。后续按同一模式批量补齐其余组件。
+这是从当前选中的 `基础组件`、`组件1`、`组件2` 画布归并生成的 Vue 3 组件库。选中设计中 269 个 reusable 节点已整理为可维护的组件族：基础控件、表单、导航、覆盖层、内容卡片、表格、布局、AI、Detail、Studio 和场景模板。
 
 ## 设计到代码规范
 
 - [P0 Vue API Spec](./docs/p0-api-spec.md)：第一阶段基础组件的 props、slots、events、状态映射和实现顺序。
+- [Component Coverage](./docs/component-coverage.md)：选中画布设计节点到 Vue 组件族的覆盖映射。
 
 ## 开发
 
@@ -38,19 +39,26 @@ createApp(App).use(DpUI).mount('#app')
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Button, Icon, SearchInput, Tag } from '@dp/ui'
+import { Button, Card, DataTable, Icon, SearchInput, SideNav, Tag, TopicCard } from '@dp/ui'
 import '@dp/ui/style.css'
 
 const keyword = ref('')
+const nav = ref('home')
+const navItems = [{ label: '首页', value: 'home', icon: 'document' }]
+const columns = [{ key: 'name', title: '名称' }]
+const data = [{ id: 1, name: 'DP 组件' }]
 </script>
 
 <template>
+  <SideNav v-model="nav" :items="navItems" />
   <Button @click="onClick">
     <template #icon><Icon name="plus" /></template>
     新建专题
   </Button>
   <SearchInput v-model="keyword" placeholder="搜索专题" />
   <Tag variant="success" icon="document">已关注</Tag>
+  <Card><TopicCard title="推荐专题" description="来自设计画布的内容卡片" /></Card>
+  <DataTable :columns="columns" :data="data" />
 </template>
 ```
 
@@ -114,6 +122,12 @@ const keyword = ref('')
 | `color`      | `string`                     | `currentColor` | 图标颜色           |
 | `decorative` | `boolean`                    | `true`         | 是否为纯装饰图标   |
 | `label`      | `string`                     | -              | 非装饰图标访问名称 |
+
+### More Components
+
+完整导出组件见 [Component Coverage](./docs/component-coverage.md)。核心组件包括：
+
+`Button`, `Icon`, `Input`, `SearchInput`, `Select`, `Textarea`, `Tag`, `Card`, `MetricCard`, `NavItem`, `Tab`, `SegmentedTabs`, `Breadcrumb`, `SideNav`, `MenuItem`, `DropdownMenu`, `EmptyState`, `LockedContent`, `DataTable`, `Table`, `TopicCard`, `RecentAccessCard`, `ListRow`, `Tile`, `CoverThumbnail`, `SectionHeader`, `PageHeader`, `TopNav`, `AppShell`, `AskBox`, `AnswerBlock`, `DialogInput`, `SourcePanel`, `CenterDialog`, `FeatureGrid`, `FeaturedTopicsPage`。
 
 ## 发布到 git.woa.com 私有 npm
 

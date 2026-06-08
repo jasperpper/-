@@ -8,6 +8,7 @@ DataPocket 设计系统 Vue 3 组件库。所有样式来自 `pencil-design-syst
 
 - [P0 Vue API Spec](./docs/p0-api-spec.md)：第一阶段基础组件的 props、slots、events、状态映射和实现顺序。
 - [Component Coverage](./docs/component-coverage.md)：选中画布设计节点到 Vue 组件族的覆盖映射。
+- [Raw Components](./docs/raw-components.md)：269 个设计稿 reusable 节点的 raw 快照导出清单。
 
 ## 开发
 
@@ -128,6 +129,28 @@ const data = [{ id: 1, name: 'DP 组件' }]
 完整导出组件见 [Component Coverage](./docs/component-coverage.md)。核心组件包括：
 
 `Button`, `Icon`, `Input`, `SearchInput`, `Select`, `Textarea`, `Tag`, `Card`, `MetricCard`, `NavItem`, `Tab`, `SegmentedTabs`, `Breadcrumb`, `SideNav`, `MenuItem`, `DropdownMenu`, `EmptyState`, `LockedContent`, `DataTable`, `Table`, `TopicCard`, `RecentAccessCard`, `ListRow`, `Tile`, `CoverThumbnail`, `SectionHeader`, `PageHeader`, `TopNav`, `AppShell`, `AskBox`, `AnswerBlock`, `DialogInput`, `SourcePanel`, `CenterDialog`, `FeatureGrid`, `FeaturedTopicsPage`。
+
+## Raw Components
+
+`raw-components` 是设计稿原始节点快照层，适合设计还原、走查和 AI 生成参考，不建议替代正式组件 API。
+
+```vue
+<script setup lang="ts">
+import { RawGallery, RawNode, RawBtnDPCreateTopicMd } from '@dp/ui'
+</script>
+
+<template>
+  <RawNode name="Btn/DP/CreateTopic/md" />
+  <RawBtnDPCreateTopicMd />
+  <RawGallery query="DP/Input" :limit="20" />
+</template>
+```
+
+说明：
+
+- `RawNode`：按设计节点名或 id 渲染 raw 快照。
+- `RawGallery`：渲染 raw 节点画廊，可用 `query` 过滤。
+- `Raw*` 命名导出：每个 reusable 设计节点都有对应导出。
 
 ## 发布到 git.woa.com 私有 npm
 

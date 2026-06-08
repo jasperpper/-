@@ -64,5 +64,6 @@ export function install(app: App) {
 
 export { AgreementRow, AnswerBlock, AppShell, AskBox, BarChartCard, Breadcrumb, Button, Card, CenterDialog, ChartBar, CoverThumbnail, DataTable, DescriptionCard, DialogInput, DropdownMenu, EmptyState, FeatureCard, FeatureGrid, FeaturedTopicsPage, FieldLabel, GuideCard, HeroCover, HomeAppShell, Icon, Input, ListRow, LockedContent, MenuItem, MetricCard, NavItem, OptionCard, PageHeader, RecentAccessCard, RecordItem, RecordList, ReferencePanel, SearchInput, SectionHeader, SegmentedTabs, Select, SideNav, SourceHeaderBar, SourcePanel, SuggestionList, SummaryBlock, Tab, Tag, Textarea, Tile, TopNav, TopicCard, TreeList, DataTable as Table }
 export type { IconName }
+export * from './raw-components'
 
 export default { install }
